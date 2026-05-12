@@ -255,6 +255,58 @@ a {
   z-index: 1;
 }
 
+.hero-visual-panel {
+  position: relative;
+  min-height: 18rem;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.hero-visual-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-visual-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 24, 19, 0.08), rgba(14, 24, 19, 0.76));
+}
+
+.hero-visual-copy {
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 1;
+  color: #fbf4e9;
+}
+
+.hero-visual-copy span {
+  display: inline-flex;
+  margin-bottom: 0.7rem;
+  padding: 0.42rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(251, 244, 233, 0.14);
+  backdrop-filter: blur(10px);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-visual-copy strong {
+  display: block;
+  max-width: 20rem;
+  font-size: 1.2rem;
+  line-height: 1.45;
+}
+
 .hero-card,
 .story-card,
 .capability-panel,
@@ -395,6 +447,59 @@ a {
   font-weight: 800;
   font-size: 0.84rem;
   letter-spacing: 0.04em;
+}
+
+.trust-badges-section {
+  padding-top: 1.25rem;
+}
+
+.trust-badges-shell {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(135deg, rgba(255, 252, 246, 0.86), rgba(240, 231, 216, 0.76));
+  box-shadow: var(--shadow-soft);
+}
+
+.trust-badges-copy {
+  padding: 0.8rem;
+}
+
+.trust-badges-copy h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 0.98;
+}
+
+.trust-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.trust-badges-grid article {
+  padding: 1.25rem;
+  border-radius: 24px;
+  background: rgba(255, 250, 241, 0.72);
+  border: 1px solid rgba(28, 43, 35, 0.08);
+}
+
+.trust-badges-grid strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--green-deep);
+}
+
+.trust-badges-grid span {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 .section {
@@ -627,9 +732,14 @@ a {
 
 .visual-gallery {
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr 0.7fr;
+  grid-template-columns: 1.25fr 0.75fr;
   gap: 1rem;
   margin-top: 1.6rem;
+}
+
+.visual-side-stack {
+  display: grid;
+  gap: 1rem;
 }
 
 .visual-card {
@@ -687,6 +797,57 @@ a {
   line-height: 1.45;
 }
 
+.visual-overlay a {
+  display: inline-flex;
+  margin-top: 0.85rem;
+  color: #f8f2e8;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.visual-card-dark {
+  display: grid;
+  align-items: end;
+  min-height: 16rem;
+  padding: 1.35rem;
+  background:
+    radial-gradient(circle at top right, rgba(201, 108, 50, 0.18), transparent 10rem),
+    linear-gradient(180deg, rgba(20, 42, 29, 0.98), rgba(36, 65, 47, 0.97));
+}
+
+.visual-card-dark::after {
+  display: none;
+}
+
+.visual-card-copy {
+  position: relative;
+  z-index: 1;
+  color: #f7f1e6;
+}
+
+.visual-card-copy h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 0.98;
+}
+
+.visual-card-copy p {
+  margin: 0.95rem 0 0;
+  color: rgba(247, 241, 230, 0.78);
+  line-height: 1.75;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: #f7f1e6;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.24em;
+}
+
 .roadmap-step span {
   display: inline-flex;
   align-items: center;
@@ -713,6 +874,52 @@ a {
 
 .enquiry-card p:last-child {
   max-width: 44rem;
+}
+
+.contact-band-section {
+  padding-top: 2rem;
+}
+
+.contact-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 2.15rem;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at left top, rgba(201, 108, 50, 0.16), transparent 11rem),
+    linear-gradient(135deg, rgba(18, 38, 27, 0.98), rgba(35, 62, 46, 0.97));
+  box-shadow: 0 28px 72px rgba(18, 38, 27, 0.2);
+}
+
+.contact-band-copy {
+  max-width: 42rem;
+}
+
+.contact-band-copy .eyebrow {
+  color: #efb96f;
+}
+
+.contact-band-copy h2 {
+  margin: 0;
+  color: #f8f1e5;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.2rem, 4.6vw, 4rem);
+  line-height: 0.98;
+}
+
+.contact-band-copy p:last-child {
+  margin: 1rem 0 0;
+  color: rgba(248, 241, 229, 0.76);
+  line-height: 1.8;
+}
+
+.contact-band-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-width: 14rem;
 }
 
 .contact-layout {
@@ -780,7 +987,9 @@ a {
   .contact-layout,
   .signature-shell,
   .signature-metrics,
-  .visual-gallery {
+  .visual-gallery,
+  .trust-badges-shell,
+  .trust-badges-grid {
     grid-template-columns: 1fr;
   }
 
@@ -814,6 +1023,16 @@ a {
 
   .hero-stage {
     margin-top: 0.5rem;
+  }
+
+  .contact-band {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-band-actions {
+    width: 100%;
+    min-width: 0;
   }
 
   .signature-copy,
@@ -858,6 +1077,12 @@ a {
 
   .signature-shell {
     padding: 0.9rem;
+    border-radius: 28px;
+  }
+
+  .trust-badges-shell,
+  .contact-band {
+    padding: 1.2rem;
     border-radius: 28px;
   }
 
