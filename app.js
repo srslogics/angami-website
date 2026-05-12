@@ -8,6 +8,7 @@ if (menuToggle && siteNav) {
     if (topbar) {
       topbar.classList.toggle("menu-open", isOpen);
     }
+    document.body.classList.toggle("menu-open", isOpen);
     menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
@@ -17,6 +18,7 @@ if (menuToggle && siteNav) {
       if (topbar) {
         topbar.classList.remove("menu-open");
       }
+      document.body.classList.remove("menu-open");
       menuToggle.setAttribute("aria-expanded", "false");
     });
   });
