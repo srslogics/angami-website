@@ -1,15 +1,20 @@
 :root {
-  --bg: #f4efe5;
-  --surface: rgba(255, 252, 246, 0.82);
-  --surface-strong: #fffaf1;
-  --ink: #213127;
-  --muted: #5e685f;
-  --line: rgba(33, 49, 39, 0.12);
+  --bg: #f2ede3;
+  --surface: rgba(255, 252, 246, 0.84);
+  --surface-strong: #fffaf2;
+  --ink: #1c2b23;
+  --muted: #617067;
+  --line: rgba(28, 43, 35, 0.1);
+  --line-strong: rgba(28, 43, 35, 0.18);
   --green: #274d37;
-  --green-deep: #173223;
-  --gold: #d39a2c;
-  --orange: #da6d2d;
-  --shadow: 0 22px 55px rgba(29, 40, 31, 0.12);
+  --green-deep: #142a1d;
+  --green-soft: #395c46;
+  --gold: #cf982f;
+  --orange: #c96c32;
+  --cream: #f7f1e6;
+  --shadow: 0 24px 60px rgba(25, 34, 29, 0.12);
+  --shadow-soft: 0 14px 32px rgba(25, 34, 29, 0.08);
+  --radius-xl: 40px;
   --radius-lg: 28px;
   --radius-md: 20px;
   --radius-sm: 14px;
@@ -30,9 +35,9 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(218, 109, 45, 0.18), transparent 24rem),
-    radial-gradient(circle at 85% 10%, rgba(39, 77, 55, 0.18), transparent 22rem),
-    linear-gradient(180deg, #f5f0e8 0%, #f0eadf 100%);
+    radial-gradient(circle at top left, rgba(201, 108, 50, 0.16), transparent 24rem),
+    radial-gradient(circle at 88% 8%, rgba(39, 77, 55, 0.14), transparent 20rem),
+    linear-gradient(180deg, #f5f0e7 0%, #efe7da 52%, #f4eee5 100%);
 }
 
 a {
@@ -55,12 +60,13 @@ a {
   justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--line);
+  padding: 1rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 999px;
-  background: rgba(255, 249, 239, 0.78);
-  backdrop-filter: blur(14px);
-  box-shadow: var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(255, 249, 240, 0.92), rgba(251, 244, 233, 0.76));
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
 }
 
 .brand {
@@ -72,13 +78,14 @@ a {
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 2.9rem;
+  height: 2.9rem;
   border-radius: 50%;
-  background: linear-gradient(145deg, var(--green), var(--green-deep));
+  background: linear-gradient(145deg, var(--green-soft), var(--green-deep));
   color: #f8f2e9;
   font-weight: 800;
   letter-spacing: 0.08em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .brand-copy {
@@ -114,7 +121,7 @@ a {
 
 .site-nav a {
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
 }
 
@@ -122,12 +129,35 @@ a {
   color: var(--green);
 }
 
+.site-nav a.is-current {
+  color: var(--green);
+}
+
 .hero {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.2fr 0.9fr;
-  gap: 1.5rem;
-  padding: 5rem 0 2rem;
-  align-items: end;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 3rem;
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 75% 18%, rgba(201, 108, 50, 0.14), transparent 11rem),
+    radial-gradient(circle at 18% 82%, rgba(39, 77, 55, 0.1), transparent 13rem),
+    linear-gradient(135deg, rgba(255, 252, 246, 0.9), rgba(241, 232, 217, 0.76));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 32px;
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -149,16 +179,20 @@ a {
 }
 
 .hero h1 {
-  font-size: clamp(3.4rem, 8vw, 6.7rem);
+  font-size: clamp(3.6rem, 8vw, 7rem);
   max-width: 10ch;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-text {
   max-width: 62ch;
-  margin: 1.25rem 0 0;
-  font-size: 1.05rem;
-  line-height: 1.8;
+  margin: 1.45rem 0 0;
+  font-size: 1.08rem;
+  line-height: 1.85;
   color: var(--muted);
+  position: relative;
+  z-index: 1;
 }
 
 .hero-actions {
@@ -184,13 +218,14 @@ a {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--green), var(--green-deep));
+  background: linear-gradient(135deg, var(--green-soft), var(--green-deep));
   color: #fbf7ef;
+  box-shadow: 0 18px 28px rgba(20, 42, 29, 0.22);
 }
 
 .button-secondary {
-  border: 1px solid var(--line);
-  background: rgba(255, 250, 241, 0.75);
+  border: 1px solid rgba(28, 43, 35, 0.12);
+  background: rgba(255, 250, 241, 0.68);
 }
 
 .hero-highlights {
@@ -203,13 +238,21 @@ a {
 }
 
 .hero-highlights li {
-  padding: 0.7rem 0.95rem;
+  padding: 0.78rem 1rem;
   border-radius: 999px;
-  background: rgba(255, 248, 236, 0.85);
-  border: 1px solid rgba(39, 77, 55, 0.08);
+  background: rgba(255, 248, 236, 0.72);
+  border: 1px solid rgba(39, 77, 55, 0.1);
   color: var(--green);
   font-size: 0.92rem;
   font-weight: 700;
+}
+
+.hero-stage {
+  display: grid;
+  gap: 1rem;
+  align-self: stretch;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-card,
@@ -221,17 +264,67 @@ a {
 .quality-grid article,
 .roadmap-step,
 .enquiry-card {
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.42);
   border-radius: var(--radius-lg);
   background: var(--surface);
   box-shadow: var(--shadow);
 }
 
 .hero-card {
-  padding: 1.35rem;
+  padding: 1.45rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(207, 152, 47, 0.18), transparent 11rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+.hero-card-spotlight {
+  min-height: 25rem;
+  background:
+    linear-gradient(180deg, rgba(253, 249, 242, 0.88), rgba(246, 237, 222, 0.74));
+}
+
+.hero-card-note-block {
+  background:
+    linear-gradient(180deg, rgba(20, 42, 29, 0.98), rgba(35, 61, 45, 0.96));
+  color: #f6eedf;
+}
+
+.hero-card-note-block .eyebrow,
+.hero-card-note-block h2,
+.hero-card-note-block .hero-card-note {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card-note-block h2 {
+  margin: 0;
+  max-width: 11ch;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.1rem, 4vw, 3.2rem);
+  line-height: 0.98;
+}
+
+.hero-stage-copy {
+  position: relative;
+  z-index: 1;
+  margin: 1rem 0 0;
+  max-width: 25rem;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
 .hero-card-top {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -249,13 +342,16 @@ a {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.9rem;
-  margin-top: 1.2rem;
+  margin-top: 1.35rem;
+  position: relative;
+  z-index: 1;
 }
 
 .metric-grid article {
-  padding: 1rem;
+  padding: 1.05rem;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.54);
+  border: 1px solid rgba(28, 43, 35, 0.07);
 }
 
 .metric-grid strong {
@@ -285,23 +381,45 @@ a {
 .trust-strip {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin: 1.5rem 0 0;
+  gap: 0.95rem;
+  margin: 1.8rem 0 0;
 }
 
 .trust-strip div {
-  padding: 1rem;
+  padding: 1rem 0.8rem;
   text-align: center;
   border-radius: 999px;
-  background: rgba(255, 248, 236, 0.75);
-  border: 1px solid var(--line);
-  color: var(--green);
+  background: linear-gradient(180deg, rgba(255, 251, 244, 0.86), rgba(246, 237, 223, 0.74));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: var(--green-deep);
   font-weight: 800;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
 }
 
 .section {
-  padding: 5rem 0 0;
+  padding: 5.6rem 0 0;
+}
+
+.page-hero {
+  padding: 4.4rem 0 1rem;
+  max-width: 58rem;
+}
+
+.page-hero h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3rem, 6vw, 5.1rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.page-intro {
+  max-width: 52rem;
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 1.04rem;
 }
 
 .section-heading {
@@ -313,6 +431,64 @@ a {
 .section-heading h2,
 .enquiry-card h2 {
   font-size: clamp(2.5rem, 5vw, 4.2rem);
+}
+
+.signature-band {
+  padding-top: 2rem;
+}
+
+.signature-shell {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 1rem;
+  padding: 1.3rem;
+  border-radius: var(--radius-xl);
+  background:
+    linear-gradient(180deg, rgba(17, 36, 26, 0.98), rgba(32, 57, 42, 0.98));
+  box-shadow: 0 28px 72px rgba(17, 36, 26, 0.22);
+}
+
+.signature-copy {
+  padding: 1.3rem;
+}
+
+.signature-copy .eyebrow {
+  color: #efb96f;
+}
+
+.signature-copy h2 {
+  margin: 0;
+  color: #f6eedf;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 0.96;
+}
+
+.signature-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.signature-metrics article {
+  padding: 1.35rem;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(248, 241, 230, 0.12), rgba(248, 241, 230, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.signature-metrics strong {
+  display: block;
+  color: #f7f1e6;
+  font-size: 1.25rem;
+}
+
+.signature-metrics span {
+  display: block;
+  margin-top: 0.8rem;
+  color: rgba(247, 241, 230, 0.74);
+  line-height: 1.7;
 }
 
 .story-layout,
@@ -329,7 +505,9 @@ a {
 .product-card,
 .quality-grid article,
 .roadmap-step {
-  padding: 1.45rem;
+  padding: 1.55rem;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.9), rgba(246, 238, 226, 0.75));
 }
 
 .story-card h3,
@@ -356,14 +534,15 @@ a {
 }
 
 .capability-panel {
-  padding: 1.6rem;
+  padding: 1.8rem;
 }
 
 .capability-panel-dark {
   background:
-    linear-gradient(180deg, rgba(23, 50, 35, 0.96), rgba(39, 77, 55, 0.94)),
+    linear-gradient(180deg, rgba(19, 39, 28, 0.98), rgba(38, 68, 50, 0.96)),
     var(--green-deep);
   color: #f6eedf;
+  box-shadow: 0 28px 70px rgba(19, 39, 28, 0.24);
 }
 
 .capability-panel-dark p,
@@ -384,12 +563,28 @@ a {
 }
 
 .capability-tile {
-  padding: 1.25rem;
+  padding: 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(255, 252, 246, 0.92), rgba(245, 237, 224, 0.78));
 }
 
 .product-card {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.product-image {
+  margin: -1.55rem -1.55rem 1.1rem;
+  aspect-ratio: 1.3 / 1;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .product-tag {
@@ -415,8 +610,8 @@ a {
   padding: 2rem;
   min-height: 18rem;
   background:
-    radial-gradient(circle at top left, rgba(211, 154, 44, 0.2), transparent 12rem),
-    linear-gradient(135deg, rgba(255, 250, 241, 0.96), rgba(237, 226, 207, 0.88));
+    radial-gradient(circle at top left, rgba(201, 108, 50, 0.16), transparent 12rem),
+    linear-gradient(135deg, rgba(255, 250, 241, 0.96), rgba(233, 221, 200, 0.92));
 }
 
 .quote-card p {
@@ -424,6 +619,72 @@ a {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.05;
+}
+
+.visual-gallery-section {
+  padding-top: 3rem;
+}
+
+.visual-gallery {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr 0.7fr;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.visual-card {
+  position: relative;
+  min-height: 19rem;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.visual-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(16, 26, 20, 0.72) 100%);
+}
+
+.visual-card-wide {
+  min-height: 26rem;
+}
+
+.visual-overlay {
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 1;
+  color: #f8f2e8;
+}
+
+.visual-overlay span {
+  display: inline-flex;
+  margin-bottom: 0.55rem;
+  padding: 0.42rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(248, 242, 232, 0.18);
+  backdrop-filter: blur(8px);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.visual-overlay strong {
+  display: block;
+  max-width: 24rem;
+  font-size: 1.15rem;
+  line-height: 1.45;
 }
 
 .roadmap-step span {
@@ -443,15 +704,67 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2.2rem;
   margin-bottom: 4rem;
   background:
-    radial-gradient(circle at 20% 10%, rgba(218, 109, 45, 0.15), transparent 12rem),
-    linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(240, 234, 223, 0.92));
+    radial-gradient(circle at 20% 10%, rgba(201, 108, 50, 0.16), transparent 12rem),
+    linear-gradient(135deg, rgba(255, 250, 241, 0.98), rgba(236, 227, 212, 0.94));
 }
 
 .enquiry-card p:last-child {
   max-width: 44rem;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.contact-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.9), rgba(244, 236, 223, 0.76));
+  box-shadow: var(--shadow);
+}
+
+.contact-card h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1.25rem;
+}
+
+.contact-card p {
+  margin: 0.35rem 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid var(--line-strong);
+}
+
+.site-footer p {
+  max-width: 32rem;
+  color: var(--muted);
+  margin: 0.45rem 0 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-content: flex-start;
+}
+
+.footer-links a {
+  color: var(--green);
+  font-weight: 700;
 }
 
 @media (max-width: 980px) {
@@ -463,7 +776,11 @@ a {
   .product-grid,
   .quality-grid,
   .roadmap-grid,
-  .trust-strip {
+  .trust-strip,
+  .contact-layout,
+  .signature-shell,
+  .signature-metrics,
+  .visual-gallery {
     grid-template-columns: 1fr;
   }
 
@@ -491,7 +808,21 @@ a {
   }
 
   .hero {
-    padding-top: 3rem;
+    margin-top: 1.4rem;
+    padding: 1.5rem;
+  }
+
+  .hero-stage {
+    margin-top: 0.5rem;
+  }
+
+  .signature-copy,
+  .signature-metrics article {
+    padding: 1.2rem;
+  }
+
+  .site-footer {
+    flex-direction: column;
   }
 }
 
@@ -509,6 +840,10 @@ a {
     max-width: none;
   }
 
+  .page-hero h1 {
+    max-width: 12ch;
+  }
+
   .metric-grid {
     grid-template-columns: 1fr;
   }
@@ -519,5 +854,14 @@ a {
 
   .hero-actions {
     flex-direction: column;
+  }
+
+  .signature-shell {
+    padding: 0.9rem;
+    border-radius: 28px;
+  }
+
+  .hero-card-note-block h2 {
+    max-width: none;
   }
 }
