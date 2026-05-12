@@ -994,35 +994,99 @@ a {
   }
 
   .topbar {
+    position: sticky;
     border-radius: 28px;
-    align-items: flex-start;
-    flex-wrap: wrap;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0.9rem 1rem;
   }
 
   .menu-toggle {
     display: inline-flex;
     margin-left: auto;
+    position: relative;
+    z-index: 2;
   }
 
   .site-nav {
     display: none;
-    width: 100%;
+    position: absolute;
+    left: 0.9rem;
+    right: 0.9rem;
+    top: calc(100% + 0.55rem);
+    width: auto;
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 0.4rem;
+    gap: 0;
+    padding: 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 24px;
+    background:
+      linear-gradient(180deg, rgba(255, 249, 240, 0.98), rgba(247, 239, 227, 0.96));
+    box-shadow: 0 24px 52px rgba(20, 42, 29, 0.16);
+    backdrop-filter: blur(18px);
   }
 
   .site-nav.is-open {
     display: flex;
   }
 
+  .site-nav a {
+    width: 100%;
+    padding: 0.95rem 0.95rem;
+    border-radius: 18px;
+    font-size: 1rem;
+  }
+
+  .site-nav a.is-current,
+  .site-nav a:hover {
+    background: rgba(39, 77, 55, 0.08);
+  }
+
+  .topbar.menu-open {
+    box-shadow: 0 18px 34px rgba(20, 42, 29, 0.1);
+  }
+
   .hero {
     margin-top: 1.4rem;
-    padding: 1.5rem;
+    padding: 1.35rem;
   }
 
   .hero-stage {
     margin-top: 0.5rem;
+  }
+
+  .section {
+    padding-top: 4.4rem;
+  }
+
+  .page-hero {
+    padding-top: 3.5rem;
+  }
+
+  .section-heading h2,
+  .enquiry-card h2,
+  .trust-badges-copy h2,
+  .contact-band-copy h2 {
+    font-size: clamp(2.15rem, 7vw, 3.3rem);
+  }
+
+  .visual-card-wide,
+  .visual-card,
+  .hero-visual-panel {
+    min-height: 15rem;
+  }
+
+  .story-card,
+  .product-card,
+  .quality-grid article,
+  .roadmap-step,
+  .trust-badges-grid article,
+  .contact-card,
+  .capability-panel,
+  .capability-tile,
+  .enquiry-card {
+    padding: 1.25rem;
   }
 
   .contact-band {
@@ -1052,7 +1116,7 @@ a {
 
   .topbar {
     top: 0.5rem;
-    padding: 0.9rem 1rem;
+    padding: 0.85rem 0.9rem;
   }
 
   .hero h1 {
@@ -1075,6 +1139,58 @@ a {
     flex-direction: column;
   }
 
+  .hero-text,
+  .page-intro,
+  .hero-stage-copy,
+  .story-card p,
+  .capability-panel p,
+  .capability-tile p,
+  .product-card p,
+  .quality-grid li,
+  .roadmap-step p,
+  .contact-card p,
+  .trust-badges-grid span,
+  .signature-metrics span,
+  .contact-band-copy p:last-child {
+    line-height: 1.65;
+  }
+
+  .hero {
+    padding: 1.1rem;
+    border-radius: 30px;
+  }
+
+  .hero::before {
+    inset: 0.65rem;
+    border-radius: 24px;
+  }
+
+  .hero-copy,
+  .signature-copy,
+  .trust-badges-copy {
+    padding-inline: 0.2rem;
+  }
+
+  .hero-highlights {
+    gap: 0.6rem;
+  }
+
+  .hero-highlights li,
+  .trust-strip div {
+    font-size: 0.8rem;
+  }
+
+  .visual-overlay {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .visual-overlay strong {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
   .signature-shell {
     padding: 0.9rem;
     border-radius: 28px;
@@ -1084,6 +1200,12 @@ a {
   .contact-band {
     padding: 1.2rem;
     border-radius: 28px;
+  }
+
+  .contact-band-actions .button,
+  .site-nav a,
+  .menu-toggle {
+    min-height: 3.1rem;
   }
 
   .hero-card-note-block h2 {
